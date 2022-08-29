@@ -1,0 +1,31 @@
+<h1>Recipes</h1>
+<p>List of your recipes</p>
+
+<table class="table table-bordered table-light">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Preparation Time</th>
+    <th scope="col">Cooking Time</th>
+    <th scope="col">Is Public</th>
+    <th scope="col">Owner</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <th scope="row"><%= recipe.id %></th>
+      <td><%= recipe.name %></td>
+      <td><%= recipe.preparation_time %> Minutes</td>
+      <td><%= recipe.cooking_time %> Minutes</td>
+      <td><%= recipe.public %></td>
+      <td><%= recipe.user.name %></td>
+      <td>
+        <button type="button" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
