@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/.idea
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -26,6 +27,8 @@
 !/tmp/storage/.keep
 
 /public/assets
+
+.env
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
