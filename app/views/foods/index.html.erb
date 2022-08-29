@@ -14,7 +14,7 @@
 
 <div class="new-container d-flex flex-row-reverse">
 <%= link_to raw("<i class=\"fa-solid fa-plus\"></i> Add Food"), foods_new_path ,:class => 'btn btn-md btn-success m-4' %>
-</div><table class="table table-bordered table-light">
+</div><table class="table table-bordered table-light text-center">
   <thead>
     <tr>
       <th scope="col">#ID</th>
@@ -26,6 +26,12 @@
     </tr>
   </thead>
   <tbody>
+   <% if (@owned_food.length() < 1) %>
+      <tr>
+        <td colspan="6" class="text-center">You Don't Have Any Food Yet 😔</td>
+     </tr>
+   <% end %>
+    
   <% @owned_food.each do |food| %>
     <tr>
       <th scope="row"><%= food.id %></th>
