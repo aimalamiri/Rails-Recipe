@@ -1,13 +1,30 @@
 class FoodsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :render_food_not_found
   before_action :authenticate_user!
+
+  # Get all foods for a logged in user
   def index
     @owned_food = current_user.foods.all
   end
 
+  # Adding a new food form
   def new
     @food = Food.new
   end
 
+  # Delete Food by ID
+  def delete_food
+    @delete_food = current_user.foods.find(params['id'])
+    if @delete_food.destroy
+      redirect_to foods_path,
+                  flash: { success: 'food has been deleted' }
+    else
+      redirect_to foods_path,
+                  flash: { error: 'food not found' }
+    end
+  end
+
+  # submit food form
   def add_food
     @new_food = current_user.foods.new(food_params)
 
@@ -19,6 +36,13 @@ class FoodsController < ApplicationController
     end
   end
 
+  # Error when deleting a not found food id
+  def render_food_not_found
+    redirect_to foods_path,
+                flash: { error: 'food not found' }
+  end
+
+  # Sanitize food params before saving in tha database
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end

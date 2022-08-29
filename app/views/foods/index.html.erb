@@ -3,6 +3,11 @@
         <p class=" mt-3 alert alert-success"><%= sanitize(flash[:success]) %></p>
     </div>
 <% end %>
+<% if flash[:error] %>
+    <div class="alert alert-solid-danger alert-bold" role="alert">
+        <p class=" mt-3 alert alert-danger"><%= sanitize(flash[:error]) %></p>
+    </div>
+<% end %>
 
 <h1>Your Food List</h1>
 <p>Hello <b> <%= current_user.name %> </b>, Here you can see all of the foods added by you</p>
@@ -28,7 +33,7 @@
       <td><%= food.measurement_unit %></td>
        <td><%= food.price %> $</td>
       <td><%= food.quantity %></td>
-      <td><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button></td>
+      <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'),"foods/delete/#{food.id}", :method => :delete,:class => "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
   </tbody>
