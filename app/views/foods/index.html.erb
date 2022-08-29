@@ -1,0 +1,27 @@
+<h1>Your Food List</h1>
+<p>Hello <b> <%= @user.name %> </b>, Here you can see all of the foods added by you</p>
+<div class="new-container d-flex flex-row-reverse">
+<button type="button" class="  btn btn-md btn-success m-4"><i class="fa-solid fa-plus"></i> Add Food</button>
+</div><table class="table table-bordered table-light">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Measurement unit</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">3</th>
+        <td>Jacob</td>
+      <td>Thornton</td>
+       <td>Mark</td>
+      <td>Otto</td>
+      <td><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button></td>
+    </tr>
+  </tbody>
+</table>
