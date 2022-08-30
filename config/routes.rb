@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   #------- Foods Routes----------
    resources 'foods', only: %w[index new create destroy] 
   #------- End Foods Routes----------
+    #------- Public Recipes Route----------
+    resources 'public_recipes', only: %w[index] 
+    #------- End Public Recipes Route----------
  
 end
