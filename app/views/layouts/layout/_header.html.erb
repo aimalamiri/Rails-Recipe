@@ -16,7 +16,10 @@
         <%= link_to "Public Recipes", public_recipes_path ,:class => (controller.controller_name == 'public_recipes' ? 'nav-link active' : 'nav-link') %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<%= recipes_path %>">Recipes</a> 
+        <%= link_to "General Shopping List", general_shopping_list_index_path ,:class => (controller.controller_name == 'general_shopping_list' ? 'nav-link active' : 'nav-link') %>
+      </li>
+      <li class="nav-item">
+       <%= link_to "Recipes", recipes_path ,:class => (controller.controller_name == 'recipes' ? 'nav-link active' : 'nav-link') %>
       </li>
     </ul>
 

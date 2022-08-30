@@ -1,5 +1,5 @@
 class Food < ApplicationRecord
-  has_many :recipe_food
+  has_many :recipe_food, dependent: :delete_all
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 250 }
