@@ -22,8 +22,11 @@
       <td><%= recipe.cooking_time %> Minutes</td>
       <td><%= recipe.public %></td>
       <td><%= recipe.user.name %></td>
-      <td>
-        <a href="<%= recipe_path(recipe.id) %>" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i> Edit</a>
+      <td class="d-flex">
+        <a href="<%= recipe_path(recipe.id) %>" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i> Show</a>
+        <%= button_to recipe_path(recipe.id), :method => :delete, :class => "btn btn-sm btn-danger mx-1" do %>
+          <i class="fa-solid fa-trash"></i> Delete
+        <% end %>
         <button type="button" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
       </td>
     </tr>
