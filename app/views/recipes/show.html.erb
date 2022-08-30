@@ -29,7 +29,7 @@
   </div>
 
   <div class="text-end">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ingredient">
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ingredient">
       Add ingredient
     </button>
 
@@ -54,4 +54,30 @@
       </div>
     </div>
   </div>
+  <table class="table table-bordered table-light text-center">
+    <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (@recipe.recipe_food.length() < 1) %>
+      <tr>
+        <td colspan="6" class="text-center">No food is attached 😔</td>
+      </tr>
+    <% end %>
+
+    <% @recipe.recipe_food.each do |item| %>
+      <tr>
+        <th scope="row"><%= item.food.name %></th>
+        <td><%= item.quantity %></td>
+        <td>$<%= item.quantity * item.food.price %></td>
+        <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'), recipe_recipe_foods_path(@recipe.id, item.id), :method => :delete, :class => "btn btn-sm btn-danger" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
