@@ -6,8 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+require_relative 'seeds/users'
+require_relative 'seeds/recipes'
 
-#  Recipe.create(name:'Potluck Macaroni and Cheese',preparation_time: 2,cooking_time: 3,description:"You'll always have a winner at the potluck when you bring macaroni and cheese. Here's an extra-rich, creamy version for the slow cooker. —Jennifer Blondek, Chicopee, Massachusetts",public: true,user_id: 2)
-#  RecipeFood.create(quantity:3,food_id:36,recipe_id:2)
-#  RecipeFood.create(quantity:2,food_id:37,recipe_id:2)
-#  RecipeFood.create(quantity:10,food_id:38,recipe_id:2)
+puts "Seeding..."
+seed_users
+seed_recipes
+puts "Seeding done."
