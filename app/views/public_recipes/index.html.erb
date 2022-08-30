@@ -1,10 +1,13 @@
 <h1>Public Recipes</h1>
 <p>Here you can find all of the public recipes</p>
 
-<div class="d-flex justify-content-center mt-5">
+<div class="d-flex justify-content-center flex-column mt-5">
 <% @all_public_recipes.each do |recipe|%>
 <div class="card border-secondary mb-3" style="width: 60rem;">
-  <div class="card-header">Recipe#<b><%= recipe.id %></b> by <b><%= recipe.user.name %></b></div>
+  <div class="card-header  d-flex justify-content-between">
+  <div>
+  Recipe#<b><%= recipe.id %></b> by <b><%= recipe.user.name %></b></div>
+  <p><%= distance_of_time_in_words(recipe.created_at, DateTime.now) %></p></div> 
   <div class="card-body text-secondary">
     <h5 class="card-title"><%= recipe.name %></h5>
     <p class="card-text"><%=h truncate(recipe.description, :length => 160) %></p>
@@ -13,11 +16,13 @@
     <div class=" d-flex align-items-center justify-content-center px-4 ">
       <span class="badge badge-dark bg-dark m-1">Total food items: <%= recipe.getfoods(recipe.id).count %></span>
        <span class="badge badge-success bg-success m-1">Total price: 
-        <%=  recipe.total_price(recipe.getfoods(recipe.id),recipe.id) %>$
+        <%=  recipe.total_price(recipe.getfoods(recipe.id)) %>$
       </span>
       </div>
+      <!-- this will be changed to recipe_path(recipe.id) after merging-->
       <%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> More Details'),'/',:class => "btn btn-sm btn-primary" %>
     </div>  
+    </div> 
     <% end %>
     
 </div>

@@ -14,9 +14,9 @@ class Recipe < ApplicationRecord
     food_list
   end
 
-  def total_price(food_arr, _recipe_id)
+  def total_price(food_list)
     total = 0
-    food_arr.each do |food|
+    food_list.each do |food|
       RecipeFood.where(food_id: food.id).each do |recipe_food|
         @sigle_food_price = food.price * recipe_food.quantity
       end
