@@ -1,0 +1,17 @@
+<% if flash[:error] %>
+    <div class="alert alert-solid-success alert-bold" role="alert">
+        <p class=" mt-3 alert alert-danger"><%= flash[:error].each{ |n| puts "#{n.to_s}" } %></p>
+    </div>
+<% end %>
+<h1>Add New Food</h1>
+<p>Add your personal food to create a recipe</p>
+
+<div class="form-signin col-4  mt-5">
+<%= form_with model: @food do |form| %>
+  <%= form.text_field :name,required:true,onkeydown:"return /[a-z]/i.test(event.key)" ,autofocus: true, class: ' mb-3 form-control',id:"name", autocomplete: "Food name",placeholder: "Food name" %>
+  <%= form.text_field :measurement_unit,required:true,onkeydown:"return /[a-z]/i.test(event.key)", class: ' mb-3 form-control',id:"mesurement", autocomplete: "Measurement unit",placeholder: "Measurement unit" %>
+    <%= form.number_field :price,required:true,onkeydown:"return /[0-9]/i.test(event.key)", class: ' mb-3 form-control',id:"price", autocomplete: "Price",placeholder: "Price" %>
+    <%= form.number_field :quantity,required:true,onkeydown:"return /[0-9]/i.test(event.key)", class: ' mb-3 form-control',id:"quantity", autocomplete: "Quantity",placeholder: "Quantity" %>
+      <%= form.submit "Save",class: 'w-100 mb-3  btn btn-md btn-success' %>
+<% end %>
+</div>
