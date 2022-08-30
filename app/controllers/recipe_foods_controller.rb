@@ -13,7 +13,8 @@ class RecipeFoodsController < ApplicationController
   def destroy
     @recipe_food = RecipeFood.find params[:id]
     @recipe_food.destroy!
-    redirect_to recipe_path(params[:recipe_id]), flash: { success: "#{@recipe_food.food.name} has been detached successfully!" }
+    redirect_to recipe_path(params[:recipe_id]),
+                flash: { success: "#{@recipe_food.food.name} has been detached successfully!" }
   end
 
   private
