@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
       redirect_to recipes_path,
                   flash: { success: "#{@recipe.name} has been successfully created!" }
     else
-      redirect_to new_recipe_path, flash: { error: @recipes.errors.full_messages }
+      redirect_to new_recipe_path, flash: { error: @recipe.errors.full_messages }
     end
   end
 
