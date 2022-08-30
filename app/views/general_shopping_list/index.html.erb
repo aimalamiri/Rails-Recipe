@@ -1,0 +1,31 @@
+<h1>General Shopping List</h1>
+<p>Here you can find all of the missing foods for your recipes</p>
+
+<div class="d-flex text-center align-items-center gap-5 justify-content-center">
+<h4 class="m-3">Amount of food items to buy : <b class='text-danger'> <%= @items.count %> </b></h4>
+<h4 class="m-3">Total price of food needed : <b class='text-danger'> <%= @price %> $</b></h4>
+
+
+</div> 
+<div class="text-center d-flex align-items-center justify-content-center">
+<table class="table table-bordered  table-light mt-5" style='width:500px'>
+  <thead>
+    <tr>
+
+      <th class="bg-dark text-light" scope="col">Food</th>
+      <th class="bg-dark text-light" scope="col">Quantity</th>
+      <th class="bg-dark text-light" scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @items.each do |item| %>
+    <tr>
+
+      <td><%= item.food.name %></td>
+      <td><%= item.quantity %> <%= item.food.measurement_unit %></td>
+      <td><%= item.food.price * item.quantity%> $</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div> 
