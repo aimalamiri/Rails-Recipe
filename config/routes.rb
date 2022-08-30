@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # Defines the root path route ("/")
   root "home#index"
 
   devise_scope :user do
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Defines the root path route ("/")
+  resources 'general_shopping_list', only: %w[index] 
   resources 'public_recipes', only: %w[index] 
   resources 'recipes', only: %w[index show destroy new create]
   resources 'foods', only: %w[index new create destroy]
