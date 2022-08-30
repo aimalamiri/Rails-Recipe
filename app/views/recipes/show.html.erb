@@ -1,0 +1,30 @@
+<h1>Recipes</h1>
+<p>List of your recipes</p>
+
+<h2 class="text-center"><%= @recipe.name %></h2>
+<div class="row">
+  <div class="col-6">
+    It takes <span class="fw-bold"><%= @recipe.preparation_time %> minutes</span> to prepare, and
+    <span class="fw-bold"><%= @recipe.cooking_time %> minute</span> more time to cook.
+    <div class="my-3">
+      Created by <span class="fw-bold"><%= @recipe.user.name %></span>
+    </div>
+    <div class="my-3">
+      Created at <span class="fw-bold"><%= distance_of_time_in_words(@recipe.created_at, DateTime.now) %></span> ago
+    </div>
+    <div class="my-3">
+      Created at <span class="fw-bold"><%= distance_of_time_in_words(@recipe.updated_at, DateTime.now) %></span> ago
+    </div>
+  </div>
+  <div class="col-6 d-flex justify-content-end">
+    <div class="form-check form-switch form-check-reverse">
+      <label class="form-check-label" for="public">Public</label>
+      <input class="form-check-input" type="checkbox" id="public" <%= 'checked' if @recipe.public %>>
+    </div>
+  </div>
+
+  <div class="col-12 py-5">
+    <h5>Step to go</h5>
+    <p><%= @recipe.description %></p>
+  </div>
+</div>

@@ -23,6 +23,7 @@
       <td><%= recipe.public %></td>
       <td><%= recipe.user.name %></td>
       <td>
+        <a href="<%= recipe_path(recipe.id) %>" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i> Edit</a>
         <button type="button" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
       </td>
     </tr>
