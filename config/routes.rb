@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   devise_for :users
   # Defines the root path route ("/")
 
-  resources 'recipes', only: %w[index show destroy new]
+  resources 'recipes', only: %w[index show destroy new create]
   resources 'foods', only: %w[index new create destroy]
 end
