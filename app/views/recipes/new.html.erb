@@ -1,0 +1,21 @@
+<% if flash[:error] %>
+  <div class="alert alert-solid-success alert-bold" role="alert">
+    <p class=" mt-3 alert alert-danger"><%= flash[:error].each { |n| puts "#{n.to_s}" } %></p>
+  </div>
+<% end %>
+<h1>Add new recipe</h1>
+<p>Add a recipe by filling the form bellow</p>
+
+<div class="form-signin col-4  mt-5">
+  <%= form_with model: @recipe do |form| %>
+    <%= form.text_field :name, required: true, autofocus: true, class: ' mb-3 form-control', id: "name", autocomplete: "recipe_name", placeholder: "Recipe name" %>
+    <%= form.number_field :preparation_time, required: true, class: 'mb-3 form-control', id: "preparation_time", autocomplete: "preparation_tim", placeholder: "Preparation time in minutes" %>
+    <%= form.number_field :cooking_time, required: true, class: ' mb-3 form-control', id: "cooking_time", autocomplete: "cooking_tim", placeholder: "Cooking time in minutes" %>
+    <%= form.text_area :description, class: ' mb-3 form-control', id: "description", placeholder: "Description" %>
+    <div class="form-check form-switch form-check-reverse mb-3 ">
+      <label class="form-check-label" for="public">Public</label>
+      <%= form.check_box :public, class: 'form-check-input', id: "public", checked: true %>
+    </div>
+    <%= form.submit "Save", class: 'w-100 mb-3  btn btn-md btn-success' %>
+  <% end %>
+</div>
