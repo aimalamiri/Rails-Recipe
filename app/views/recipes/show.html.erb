@@ -75,7 +75,7 @@
         <th scope="row"><%= item.food.name %></th>
         <td><%= item.quantity %></td>
         <td>$<%= item.quantity * item.food.price %></td>
-        <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'), recipe_recipe_foods_path(@recipe.id, item.id), :method => :delete, :class => "btn btn-sm btn-danger" %></td>
+        <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'), recipe_recipe_foods_path(@recipe.id, id: item.id), :method => :delete, :class => "btn btn-sm btn-danger" %></td>
       </tr>
     <% end %>
     </tbody>
