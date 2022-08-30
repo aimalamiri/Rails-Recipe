@@ -29,9 +29,11 @@
   </div>
 
   <div class="text-end">
-    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ingredient">
-      Add ingredient
-    </button>
+    <% if @recipe.user == current_user %>
+      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ingredient">
+        Add ingredient
+      </button>
+    <% end %>
 
     <div class="modal fade" id="ingredient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
