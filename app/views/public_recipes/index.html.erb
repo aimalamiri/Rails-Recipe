@@ -19,8 +19,8 @@
         <%=  recipe.total_price(recipe.getfoods(recipe.id)) %>$
       </span>
       </div>
-      <!-- this will be changed to recipe_path(recipe.id) after merging-->
-      <%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> More Details'),'/',:class => "btn btn-sm btn-primary" %>
+      
+      <%= link_to raw('<i class=\"fa-solid fa-trash-can"\></i> More Details'),recipe_path(recipe.id),:class => "btn btn-sm btn-primary" %>
     </div>  
     </div> 
     <% end %>
