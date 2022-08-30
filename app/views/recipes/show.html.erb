@@ -35,7 +35,7 @@
 
     <div class="modal fade" id="ingredient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
-        <%= form_with model: @recipe do |form| %>
+        <%= form_with url: recipe_recipe_foods_path(@recipe.id), method: :post do |form| %>
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Attach ingredients</h5>
