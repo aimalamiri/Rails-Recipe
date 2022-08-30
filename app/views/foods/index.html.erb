@@ -13,7 +13,7 @@
 <p>Hello <b> <%= current_user.name %> </b>, Here you can see all of the foods added by you</p>
 
 <div class="new-container d-flex flex-row-reverse">
-<%= link_to raw("<i class=\"fa-solid fa-plus\"></i> Add Food"), foods_new_path ,:class => 'btn btn-md btn-success m-4' %>
+<%= link_to raw("<i class=\"fa-solid fa-plus\"></i> Add Food"), new_food_path ,:class => 'btn btn-md btn-success m-4' %>
 </div><table class="table table-bordered table-light text-center">
   <thead>
     <tr>
@@ -39,7 +39,7 @@
       <td><%= food.measurement_unit %></td>
        <td><%= food.price %> $</td>
       <td><%= food.quantity %></td>
-      <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'),"foods/delete/#{food.id}", :method => :delete,:class => "btn btn-sm btn-danger" %></td>
+      <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'),food_path(food.id), :method => :delete,:class => "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
   </tbody>

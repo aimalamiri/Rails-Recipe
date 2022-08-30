@@ -10,10 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   #------- Foods Routes----------
-   get 'foods' , to: 'foods#index'
-   get 'foods/new' , to: 'foods#new'
-   post 'foods' , to: 'foods#add_food'
-   delete 'foods/delete/:id' , to: 'foods#delete_food'
+   resources 'foods', only: %w[index new create destroy] 
   #------- End Foods Routes----------
  
 end

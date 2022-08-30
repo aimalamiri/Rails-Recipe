@@ -13,7 +13,7 @@ class FoodsController < ApplicationController
   end
 
   # Delete Food by ID
-  def delete_food
+  def destroy
     @delete_food = current_user.foods.find(params['id'])
     if @delete_food.destroy
       redirect_to foods_path,
@@ -25,14 +25,15 @@ class FoodsController < ApplicationController
   end
 
   # submit food form
-  def add_food
+  def create
     @new_food = current_user.foods.new(food_params)
 
     if @new_food.save
       redirect_to foods_path,
-                  flash: { success: "#{@new_food.name} has been added , with a price of #{@new_food.price}$ per 1 #{@new_food.measurement_unit}" }
+                  flash: { success: "#{@new_food.name} has been added ,
+                   with a price of #{@new_food.price}$ per 1 #{@new_food.measurement_unit}" }
     else
-      redirect_to foods_new_path, flash: { error: @new_food.errors.full_messages }
+      redirect_to new_foods, flash: { error: @new_food.errors.full_messages }
     end
   end
 
