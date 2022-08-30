@@ -27,4 +27,59 @@
     <h5>Step to go</h5>
     <p><%= @recipe.description %></p>
   </div>
+
+  <div class="text-end">
+    <% if @recipe.user == current_user %>
+      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ingredient">
+        Add ingredient
+      </button>
+    <% end %>
+
+    <div class="modal fade" id="ingredient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <%= form_with url: recipe_recipe_foods_path(@recipe.id), method: :post do |form| %>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Attach ingredients</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= form.select :food_id, Food.order(:name).pluck(:name, :id), {}, class: ' mb-3 form-select', placeholder: "Select a food item" %>
+              <%= form.number_field :quantity, required: true, class: ' mb-3 form-control', id: "quantity", autocomplete: "Quantity", placeholder: "Quantity" %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <%= form.submit "Save", class: 'btn btn-md btn-success' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <table class="table table-bordered table-light text-center">
+    <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (@recipe.recipe_food.length() < 1) %>
+      <tr>
+        <td colspan="6" class="text-center">No food is attached 😔</td>
+      </tr>
+    <% end %>
+
+    <% @recipe.recipe_food.each do |item| %>
+      <tr>
+        <th scope="row"><%= item.food.name %></th>
+        <td><%= item.quantity %></td>
+        <td>$<%= item.quantity * item.food.price %></td>
+        <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'), recipe_recipe_foods_path(@recipe.id, id: item.id), :method => :delete, :class => "btn btn-sm btn-danger" %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>

@@ -1,34 +1,33 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-<div class="container">
-  <a class="navbar-brand" href="#">Recipe App</a>
+  <div class="container">
+    <a class="navbar-brand" href="#">Recipe App</a>
 
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav  me-auto  mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-       <%= link_to "Home", root_path ,:class => (controller.controller_name == 'home' ? 'nav-link active' : 'nav-link') %>
-      </li>
-      <li class="nav-item">
-      <%= link_to "Foods", foods_path ,:class => (controller.controller_name == 'foods' ? 'nav-link active' : 'nav-link') %>
-      </li>
-      
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav  me-auto  mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
-        <%= link_to "Public Recipes", public_recipes_path ,:class => (controller.controller_name == 'public_recipes' ? 'nav-link active' : 'nav-link') %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "General Shopping List", general_shopping_list_index_path ,:class => (controller.controller_name == 'general_shopping_list' ? 'nav-link active' : 'nav-link') %>
-      </li>
-      <li class="nav-item">
-       <%= link_to "Recipes", recipes_path ,:class => (controller.controller_name == 'recipes' ? 'nav-link active' : 'nav-link') %>
-      </li>
-    </ul>
+          <%= link_to "Home", root_path, :class => (controller.controller_name == 'home' ? 'nav-link active' : 'nav-link') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Foods", foods_path, :class => (controller.controller_name == 'foods' ? 'nav-link active' : 'nav-link') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Recipes", recipes_path, :class => (controller.controller_name == 'recipes' ? 'nav-link active' : 'nav-link') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Public Recipes", public_recipes_path, :class => (controller.controller_name == 'public_recipes' ? 'nav-link active' : 'nav-link') %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "General Shopping List", general_shopping_list_index_path ,:class => (controller.controller_name == 'general_shopping_list' ? 'nav-link active' : 'nav-link') %>
+        </li>
+      </ul>
 
       <% if user_signed_in? %>
-  <%= button_to "logout", destroy_user_session_path, :method => :delete , :class => 'btn btn-danger my-2 my-sm-0'  %>
-<% else %>
- <%= link_to  "Login", new_user_session_path, method: :get , :class => 'btn btn-success my-2 my-sm-0'  %>
-<% end %>
+        <%= button_to "logout", destroy_user_session_path, :method => :delete, :class => 'btn btn-danger my-2 my-sm-0' %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, method: :get, :class => 'btn btn-success my-2 my-sm-0' %>
+      <% end %>
 
+    </div>
   </div>
-   </div>
 </nav>
