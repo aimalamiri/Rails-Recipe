@@ -100,6 +100,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    erb-formatter (0.3.0)
     erubi (1.11.0)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
@@ -269,7 +270,11 @@ DEPENDENCIES
   debug
   devise (~> 4.8)
   dotenv-rails
+
   factory_bot_rails
+
+  erb-formatter
+
   importmap-rails
   jbuilder
   pg (~> 1.1)
