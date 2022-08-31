@@ -26,4 +26,9 @@ RSpec.describe Recipe, type: :model do
     @recipe.preparation_time = -2
     expect(@recipe).to_not be_valid
   end
+
+  it 'cooking time should be an integer value' do
+    @recipe.cooking_time = 'twenty'
+    expect(@recipe).to_not be_valid
+  end
 end
