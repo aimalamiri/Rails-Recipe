@@ -23,4 +23,10 @@ RSpec.describe 'Recipe Page', type: :system do
     visit recipes_path
     expect(page).to have_content('List of your recipes')
   end
+
+  it 'visits the recipes new page' do
+    visit recipes_path
+    find('#add-recipe').click
+    expect(page).to have_content('Add new recipe')
+  end
 end
