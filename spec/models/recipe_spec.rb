@@ -16,4 +16,9 @@ RSpec.describe Recipe, type: :model do
     @recipe.name = 'a'*256
     expect(@recipe).to_not be_valid
   end
+
+  it 'preparation time should be an integer value' do
+    @recipe.preparation_time = 'twenty'
+    expect(@recipe).to_not be_valid
+  end
 end
