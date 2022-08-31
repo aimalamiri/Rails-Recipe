@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  subject { Recipe.new(name: 'Recipe', preparation_time: 20, cooking_time: 15, description: 'text', public: true, user_id: 1) }
+  subject do
+    Recipe.new(name: 'Recipe', preparation_time: 20, cooking_time: 15, description: 'text', public: true, user_id: 1)
+  end
   before { subject.save }
 
   it 'name should be present' do
@@ -10,7 +12,7 @@ RSpec.describe Recipe, type: :model do
   end
 
   it 'name should not be over 255 characters' do
-    subject.name = 'a'*256
+    subject.name = 'a' * 256
     expect(subject).to_not be_valid
   end
 

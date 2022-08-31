@@ -71,7 +71,6 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :system
   # Use the following instead if you are on Devise <= 4.1.1
   # config.include Devise::TestHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :controller
-  #
+  config.extend ControllerMacros, type: :controller
   Capybara.default_driver = :selenium_chrome
 end
