@@ -17,12 +17,12 @@
 </div><table class="table table-bordered table-light text-center">
   <thead>
     <tr>
-      <th scope="col">#ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Measurement unit</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Action</th>
+      <th class="bg-dark text-light" scope="col">#ID</th>
+      <th class="bg-dark text-light" scope="col">Name</th>
+      <th class="bg-dark text-light" scope="col">Measurement unit</th>
+      <th class="bg-dark text-light" scope="col">Price</th>
+      <th class="bg-dark text-light" scope="col">Quantity</th>
+      <th class="bg-dark text-light" scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -39,7 +39,7 @@
       <td><%= food.measurement_unit %></td>
        <td><%= food.price %> $</td>
       <td><%= food.quantity %></td>
-      <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'),food_path(food.id), :method => :delete,:class => "btn btn-sm btn-danger" %></td>
+       <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'),food_path(food.id), :method => :delete,:class => "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
   </tbody>
