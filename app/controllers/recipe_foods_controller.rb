@@ -1,4 +1,6 @@
 class RecipeFoodsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
     if @recipe_food.save
