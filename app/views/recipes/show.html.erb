@@ -28,9 +28,9 @@
     <p><%= @recipe.description %></p>
   </div>
 
-  <div class="text-end">
+  <div class="text-end px-0">
     <% if @recipe.user == current_user %>
-      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#ingredient">
+      <button type="button" class="btn btn-primary mb-3 mr-n1" data-bs-toggle="modal" data-bs-target="#ingredient">
         Add ingredient
       </button>
     <% end %>
