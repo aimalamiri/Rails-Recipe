@@ -29,4 +29,15 @@ RSpec.describe 'Recipe Page', type: :system do
     find('#add-recipe').click
     expect(page).to have_content('Add new recipe')
   end
+
+  it 'visits the recipes new page' do
+    visit new_recipe_path
+    find('#name').set 'Juice'
+    find('#preparation_time').set 25
+    find('#cooking_time').set 20
+    find('#description').set 'Some text here'
+    find('#public').set true
+    find('#submit').click
+    expect(page).to have_content('Juice has been successfully created!')
+  end
 end
