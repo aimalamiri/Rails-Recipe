@@ -36,4 +36,9 @@ RSpec.describe Recipe, type: :model do
     @recipe.cooking_time = -2
     expect(@recipe).to_not be_valid
   end
+
+  it 'public attribute must be a boolean value' do
+    @recipe.cooking_time = 'true'
+    expect(@recipe).to_not be_valid
+  end
 end
