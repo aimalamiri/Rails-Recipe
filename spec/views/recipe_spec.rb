@@ -46,4 +46,10 @@ RSpec.describe 'Recipe Page', type: :system do
     first('button.delete').click
     expect(page).to have_content('has been deleted successfully!')
   end
+
+  it 'visits the recipes show page' do
+    visit recipes_path
+    first('a.show').click
+    expect(page).to have_content('Step to go')
+  end
 end
