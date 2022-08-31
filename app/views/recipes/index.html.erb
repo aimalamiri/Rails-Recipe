@@ -27,7 +27,7 @@
       <td><%= recipe.user.name %></td>
       <td class="d-flex">
         <a href="<%= recipe_path(recipe.id) %>" class="btn btn-sm btn-primary"><i class="fa-solid fa-eye"></i> Show</a>
-        <%= button_to recipe_path(recipe.id), :method => :delete, :class => "btn btn-sm btn-danger mx-1" do %>
+        <%= button_to recipe_path(recipe.id), :method => :delete, :class => "btn btn-sm btn-danger mx-1 delete" do %>
           <i class="fa-solid fa-trash"></i> Delete
         <% end %>
       </td>

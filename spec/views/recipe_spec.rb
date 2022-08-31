@@ -40,4 +40,10 @@ RSpec.describe 'Recipe Page', type: :system do
     find('#submit').click
     expect(page).to have_content('Juice has been successfully created!')
   end
+
+  it 'deletes a recipe when delete button is clicked' do
+    visit recipes_path
+    first('button.delete').click
+    expect(page).to have_content('has been deleted successfully!')
+  end
 end
