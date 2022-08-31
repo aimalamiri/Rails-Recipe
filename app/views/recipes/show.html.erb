@@ -10,10 +10,10 @@
       Created by <span class="fw-bold"><%= @recipe.user.name %></span>
     </div>
     <div class="my-3">
-      Created at <span class="fw-bold"><%= distance_of_time_in_words(@recipe.created_at, DateTime.now) %></span> ago
+      Created  <span class="fw-bold"><%= distance_of_time_in_words(@recipe.created_at, DateTime.now) %></span> ago
     </div>
     <div class="my-3">
-      Updated at <span class="fw-bold"><%= distance_of_time_in_words(@recipe.updated_at, DateTime.now) %></span> ago
+      Updated  <span class="fw-bold"><%= distance_of_time_in_words(@recipe.updated_at, DateTime.now) %></span> ago
     </div>
   </div>
   <div class="col-6 d-flex justify-content-end">
@@ -59,10 +59,13 @@
   <table class="table table-bordered table-light text-center">
     <thead>
     <tr>
-      <th scope="col">Food</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Value</th>
-      <th scope="col">Action</th>
+      <th class="bg-dark text-light" scope="col">Food</th>
+      <th class="bg-dark text-light" scope="col">Quantity</th>
+      <th class="bg-dark text-light" scope="col">Value</th>
+            <% if @recipe.user == current_user %>
+       
+  
+      <th class="bg-dark text-light" scope="col">Action</th>     <% end %>
     </tr>
     </thead>
     <tbody>
@@ -77,7 +80,9 @@
         <th scope="row"><%= item.food.name %></th>
         <td><%= item.quantity %></td>
         <td>$<%= item.quantity * item.food.price %></td>
+         <% if @recipe.user == current_user %>
         <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'), recipe_recipe_foods_path(@recipe.id, id: item.id), :method => :delete, :class => "btn btn-sm btn-danger" %></td>
+       <% end %>
       </tr>
     <% end %>
     </tbody>
