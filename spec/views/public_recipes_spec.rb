@@ -6,10 +6,10 @@ RSpec.describe 'Public Recipes Page', type: :system do
     @user = User.last
 
     @recipe = Recipe.create(
-      name: "Recipe",
+      name: 'Recipe',
       preparation_time: rand(10..60),
       cooking_time: rand(10..60),
-      description: "Lorem ipsum dolor sit amit",
+      description: 'Lorem ipsum dolor sit amit',
       public: true,
       user_id: @user.id
     )
