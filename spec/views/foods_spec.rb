@@ -1,11 +1,9 @@
 require 'rails_helper'
 
-# require_relative '../helpers/auth_helper'
-# include AuthHelper
-
 RSpec.describe 'Foods Page', type: :system do
   before :all do
-    @user = User.first
+    User.create(name: "User 1", email: "user1@test.com", password: 'password').encrypted_password
+    @user = User.last
     sign_in @user
 
     @food = Food.create(name:'FOOD1',price:3,measurement_unit:'kilos',quantity:3,user_id: @user.id)
