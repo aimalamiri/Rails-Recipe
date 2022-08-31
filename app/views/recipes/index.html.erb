@@ -2,7 +2,7 @@
 <p>List of your recipes</p>
 
 <div class="text-end">
-  <%= link_to raw("<i class=\"fa-solid fa-plus\"></i> Add Recipe"), new_recipe_path ,:class => 'btn btn-md btn-success m-4' %>
+  <%= link_to raw("<i class=\"fa-solid fa-plus\"></i> Add Recipe"), new_recipe_path ,:class => 'btn btn-md btn-success m-4', id: 'add-recipe' %>
 </div>
 <table class="table table-bordered table-light">
   <thead>
@@ -26,8 +26,8 @@
       <td><%= recipe.public %></td>
       <td><%= recipe.user.name %></td>
       <td class="d-flex">
-        <a href="<%= recipe_path(recipe.id) %>" class="btn btn-sm btn-primary"><i class="fa-solid fa-eye"></i> Show</a>
-        <%= button_to recipe_path(recipe.id), :method => :delete, :class => "btn btn-sm btn-danger mx-1" do %>
+        <a href="<%= recipe_path(recipe.id) %>" class="btn btn-sm btn-primary show"><i class="fa-solid fa-eye"></i> Show</a>
+        <%= button_to recipe_path(recipe.id), :method => :delete, :class => "btn btn-sm btn-danger mx-1 delete" do %>
           <i class="fa-solid fa-trash"></i> Delete
         <% end %>
       </td>
