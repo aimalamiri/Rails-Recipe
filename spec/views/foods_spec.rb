@@ -22,4 +22,14 @@ RSpec.describe 'Foods Page', type: :system do
     find('#add-food').click
     expect(page).to have_content('Add New Food')
   end
+
+  it 'Add a new food form' do
+    visit new_food_path
+    find('#name').set 'Apple'
+    find('#measurement').set 'grams'
+    find('#price').set 25
+    find('#quantity').set 100
+    find('#submit').click
+    expect(page).to have_content("Apple has been added , with a price of 25$ per 1 grams")
+  end
 end
