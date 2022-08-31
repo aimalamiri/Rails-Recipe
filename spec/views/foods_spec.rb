@@ -32,4 +32,10 @@ RSpec.describe 'Foods Page', type: :system do
     find('#submit').click
     expect(page).to have_content("Apple has been added , with a price of 25$ per 1 grams")
   end
+
+  it 'delete a food item' do
+    visit foods_path
+    first(:button, 'Delete').click
+    expect(page).to have_content('food has been deleted')
+  end
 end
