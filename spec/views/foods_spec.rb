@@ -17,7 +17,7 @@ RSpec.describe 'Foods Page', type: :system do
     expect(page).to have_content(@food.name)
   end
 
-  it 'visits the foods index page' do
+  it 'visits the foods new page' do
     visit foods_path
     find('#add-food').click
     expect(page).to have_content('Add New Food')
