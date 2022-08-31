@@ -1,0 +1,35 @@
+<h1>Your Food List</h1>
+<p>Hello <b> <%= current_user.name %> </b>, Here you can see all of the foods added by you</p>
+
+<div class="new-container d-flex flex-row-reverse">
+<%= link_to raw("<i class=\"fa-solid fa-plus\"></i> Add Food"), new_food_path ,:class => 'btn btn-md btn-success my-4', id: 'add-food' %>
+</div><table class="table table-bordered table-light text-center">
+  <thead>
+    <tr>
+      <th class="bg-dark text-light" scope="col">#ID</th>
+      <th class="bg-dark text-light" scope="col">Name</th>
+      <th class="bg-dark text-light" scope="col">Measurement unit</th>
+      <th class="bg-dark text-light" scope="col">Price</th>
+      <th class="bg-dark text-light" scope="col">Quantity</th>
+      <th class="bg-dark text-light" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% if (@owned_food.length() < 1) %>
+      <tr>
+        <td colspan="6" class="text-center">You Don't Have Any Food Yet 😔</td>
+     </tr>
+   <% end %>
+    
+  <% @owned_food.each do |food| %>
+    <tr>
+      <th scope="row"><%= food.id %></th>
+        <td><%= food.name %></td>
+      <td><%= food.measurement_unit %></td>
+       <td><%= food.price %> $</td>
+      <td><%= food.quantity %></td>
+       <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'),food_path(food.id), :method => :delete,:class => "btn btn-sm btn-danger" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

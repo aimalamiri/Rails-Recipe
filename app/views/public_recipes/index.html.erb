@@ -1,0 +1,11 @@
+<h1>Public Recipes</h1>
+<p>Here you can find all of the public recipes</p>
+
+<div class="d-flex justify-content-center flex-column mt-5">
+<% @all_public_recipes.each do |recipe|%>
+<%= render partial: "layouts/partials/recipe_card", locals: {
+    recipe: recipe,
+  }%>
+    <% end %>
+    
+</div>

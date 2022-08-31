@@ -1,0 +1,90 @@
+<h1>Recipes</h1>
+<p>List of your recipes</p>
+
+<h2 class="text-center"><%= @recipe.name %></h2>
+<div class="row">
+  <div class="col-6">
+    It takes <span class="fw-bold"><%= @recipe.preparation_time %> minutes</span> to prepare, and
+    <span class="fw-bold"><%= @recipe.cooking_time %> minute</span> more time to cook.
+    <div class="my-3">
+      Created by <span class="fw-bold"><%= @recipe.user.name %></span>
+    </div>
+    <div class="my-3">
+      Created  <span class="fw-bold"><%= distance_of_time_in_words(@recipe.created_at, DateTime.now) %></span> ago
+    </div>
+    <div class="my-3">
+      Updated  <span class="fw-bold"><%= distance_of_time_in_words(@recipe.updated_at, DateTime.now) %></span> ago
+    </div>
+  </div>
+  <div class="col-6 d-flex justify-content-end">
+    <div class="form-check form-switch form-check-reverse">
+      <label class="form-check-label" for="public">Public</label>
+      <input class="form-check-input" type="checkbox" id="public" <%= 'checked' if @recipe.public %> disabled>
+    </div>
+  </div>
+
+  <div class="col-12 py-5">
+    <h5>Step to go</h5>
+    <p><%= @recipe.description %></p>
+  </div>
+
+  <div class="text-end px-0">
+    <% if @recipe.user == current_user %>
+      <button type="button" class="btn btn-primary mb-3 mr-n1" data-bs-toggle="modal" data-bs-target="#ingredient">
+        Add ingredient
+      </button>
+    <% end %>
+
+    <div class="modal fade" id="ingredient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <%= form_with url: recipe_recipe_foods_path(@recipe.id), method: :post do |form| %>
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Attach ingredients</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= form.select :food_id, Food.order(:name).pluck(:name, :id), {}, class: ' mb-3 form-select', placeholder: "Select a food item" %>
+              <%= form.number_field :quantity, required: true, class: ' mb-3 form-control', id: "quantity", autocomplete: "Quantity", placeholder: "Quantity" %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <%= form.submit "Save", class: 'btn btn-md btn-success' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <table class="table table-bordered table-light text-center">
+    <thead>
+    <tr>
+      <th class="bg-dark text-light" scope="col">Food</th>
+      <th class="bg-dark text-light" scope="col">Quantity</th>
+      <th class="bg-dark text-light" scope="col">Value</th>
+            <% if @recipe.user == current_user %>
+       
+  
+      <th class="bg-dark text-light" scope="col">Action</th>     <% end %>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (@recipe.recipe_food.length() < 1) %>
+      <tr>
+        <td colspan="6" class="text-center">No food is attached 😔</td>
+      </tr>
+    <% end %>
+
+    <% @recipe.recipe_food.each do |item| %>
+      <tr>
+        <th scope="row"><%= item.food.name %></th>
+        <td><%= item.quantity %></td>
+        <td>$<%= item.quantity * item.food.price %></td>
+         <% if @recipe.user == current_user %>
+        <td><%= button_to raw('<i class=\"fa-solid fa-trash-can"\></i> Delete'), recipe_recipe_foods_path(@recipe.id, id: item.id), :method => :delete, :class => "btn btn-sm btn-danger" %></td>
+       <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

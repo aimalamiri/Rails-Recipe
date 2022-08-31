@@ -1,0 +1,37 @@
+<h1>Recipes</h1>
+<p>List of your recipes</p>
+
+<div class="text-end">
+  <%= link_to raw("<i class=\"fa-solid fa-plus\"></i> Add Recipe"), new_recipe_path ,:class => 'btn btn-md btn-success my-4', id: 'add-recipe' %>
+</div>
+<table class="table table-bordered table-light">
+  <thead>
+  <tr >
+    <th class="bg-dark text-light" scope="col">#</th>
+    <th class="bg-dark text-light" scope="col">Name</th>
+    <th class="bg-dark text-light" scope="col">Preparation Time</th>
+    <th class="bg-dark text-light" scope="col">Cooking Time</th>
+    <th class="bg-dark text-light" scope="col">Is Public</th>
+    <th class="bg-dark text-light" scope="col">Owner</th>
+    <th class="bg-dark text-light" scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <th scope="row"><%= recipe.id %></th>
+      <td><%= recipe.name %></td>
+      <td><%= recipe.preparation_time %> Minutes</td>
+      <td><%= recipe.cooking_time %> Minutes</td>
+      <td><%= recipe.public %></td>
+      <td><%= recipe.user.name %></td>
+      <td class="d-flex">
+        <a href="<%= recipe_path(recipe.id) %>" class="btn btn-sm btn-primary show"><i class="fa-solid fa-eye"></i> Show</a>
+        <%= button_to recipe_path(recipe.id), :method => :delete, :class => "btn btn-sm btn-danger mx-1 delete" do %>
+          <i class="fa-solid fa-trash"></i> Delete
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
