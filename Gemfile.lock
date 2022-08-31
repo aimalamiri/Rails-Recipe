@@ -270,11 +270,8 @@ DEPENDENCIES
   debug
   devise (~> 4.8)
   dotenv-rails
-
-  factory_bot_rails
-
   erb-formatter
-
+  factory_bot_rails
   importmap-rails
   jbuilder
   pg (~> 1.1)
