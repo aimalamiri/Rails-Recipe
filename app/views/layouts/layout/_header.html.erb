@@ -1,31 +1,38 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Recipe App</a>
-
+    <a class="navbar-brand" href="/">Recipe App</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav  me-auto  mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
           <%= link_to "Home", root_path, :class => (controller.controller_name == 'home' ? 'nav-link active' : 'nav-link') %>
         </li>
+         <li class="nav-item">
+          <%= link_to "Public Recipes", public_recipes_path, :class => (controller.controller_name == 'public_recipes' ? 'nav-link active' : 'nav-link') %>
+        </li>
+        <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Foods", foods_path, :class => (controller.controller_name == 'foods' ? 'nav-link active' : 'nav-link') %>
         </li>
         <li class="nav-item">
           <%= link_to "Recipes", recipes_path, :class => (controller.controller_name == 'recipes' ? 'nav-link active' : 'nav-link') %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Public Recipes", public_recipes_path, :class => (controller.controller_name == 'public_recipes' ? 'nav-link active' : 'nav-link') %>
-        </li>
+       
         <li class="nav-item">
           <%= link_to "General Shopping List", general_shopping_list_index_path ,:class => (controller.controller_name == 'general_shopping_list' ? 'nav-link active' : 'nav-link') %>
         </li>
+        <% end %>
+        
       </ul>
 
       <% if user_signed_in? %>
         <%= button_to "logout", destroy_user_session_path, :method => :delete, :class => 'btn btn-danger my-2 my-sm-0' %>
       <% else %>
-        <%= link_to "Login", new_user_session_path, method: :get, :class => 'btn btn-success my-2 my-sm-0' %>
+        <%= link_to "Login", new_user_session_path, method: :get, :class => 'btn btn-primary my-2 my-sm-0' %>
+         <%= link_to "Signup", new_user_registration_path , method: :get, :class => 'btn btn-primary my-2 my-sm-0 mx-2' %>
       <% end %>
 
     </div>

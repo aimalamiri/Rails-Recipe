@@ -1,32 +1,59 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="mt-4">
+  <div class="p-4 p-md-5 mb-4 rounded text-white bg-dark">
+    <div class="col-md-8 px-0">
+      <h1 class="display-4 fst-italic">Welcome To the #1 Food Recipes website</h1>
+      <p class="lead my-3">Discover created recipes … or start your own recipe creations , easily
+        modifying ingredients and steps as you need! Save them all in one place
+        and cook them with joy</p>
+      <div class="lead mb-0"><a href="/public_recipes" class="btn btn-primary text-white fw-bold">Check Public Recipes</a></div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
 
-<table class="table table-bordered table-light">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td><button type="button" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i> Edit</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td><button type="button" class="btn btn-sm btn-success"><i class="fa-solid fa-floppy-disk"></i> Save</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird </td>
-      <td><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</button></td>
-    </tr>
-  </tbody>
-</table>
+    <div class="d-flex justify-content-center align-items-center flex-column mt-5">
+      <h2>
+        Recent Recipes</h2>
+      <% @recent_recipe.each do |recipe| %>
+        <%= render partial: "layouts/partials/recipe_card", locals: {
+    recipe: recipe,
+  } %>
+      <% end %>
+    </div></div>
+  <div class="col-md-6 d-flex align-items-center">
+    <div
+      class="
+        d-flex
+        justify-content-center
+        align-self-center
+        text-center
+        flex-column
+        mt-5
+      "
+    >
+      <h2>
+        Why Us ?</h2>
+      <p>Everyone is welcome at the Recipe App table: people of all races,
+        religions, genders, sexual orientations, ages, backgrounds, and
+        abilities. We strive to be a resource for every home cook, and we
+        consciously work to make this inclusion felt in every part of the site,
+        from the individuals we hire to the recipes we share. We’re not
+        perfect, but we hope to get more right than we get wrong</p>
+      <h2>
+        Our History</h2>
+      <p>Recipe App was founded in 2022 by <a href="https://github.com/ichala" target="_blank">Ali Jendoubi</a> and <a href="https://github.com/aimalamiri" target="_blank">Aimal Amiri
+</a> as a home cooking
+        blog . Today, Recipe App has
+        grown into a trusted resource for home cooks with more than 3,000
+        tested recipes, guides, and meal plans, drawing over 15 million readers
+        each month from around the world. We’re supported by a diverse group of
+        recipe developers, food writers, recipe and product testers,
+        photographers, and other creative professionals.</p>
+        <h2>
+        Recipe Development</h2>
+        <p>Our recipes primarily use fresh, unprocessed ingredients but we also believe there is a time and a place for canned, frozen, and other prepared ingredients. We believe in a diet that includes a wide variety of foods: real butter and cream, extra virgin olive oil, eggs, lots of fruits and vegetables, and protein from meat, fish, beans, and cheese. Plus cake for dessert.</p>
+    </div>
+  </div>
+
+</div>
