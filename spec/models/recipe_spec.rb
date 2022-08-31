@@ -21,4 +21,9 @@ RSpec.describe Recipe, type: :model do
     @recipe.preparation_time = 'twenty'
     expect(@recipe).to_not be_valid
   end
+
+  it 'preparation time should be greater then or equal to 1' do
+    @recipe.preparation_time = -2
+    expect(@recipe).to_not be_valid
+  end
 end
