@@ -5,6 +5,9 @@
 Discover created recipes or start your own recipe creations , easily modifying ingredients and steps as you need! Save
 them all in one place and cook them with joy! You also have the permission to make it public or private.
 
+## Live Demo
+[Demo Link](https://rails-recipe-00023.herokuapp.com/)
+
 ## Built With
 
 - Ruby
